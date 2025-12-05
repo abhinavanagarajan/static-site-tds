@@ -1,30 +1,80 @@
-<p align="center">
-  <a href="https://revealjs.com">
-  <img src="https://hakim-static.s3.amazonaws.com/reveal-js/logo/v1/reveal-black-text-sticker.png" alt="reveal.js" width="500">
-  </a>
-  <br><br>
-  <a href="https://github.com/hakimel/reveal.js/actions"><img src="https://github.com/hakimel/reveal.js/workflows/tests/badge.svg"></a>
-  <a href="https://slides.com/"><img src="https://static.slid.es/images/slides-github-banner-320x40.png?1" alt="Slides" width="160" height="20"></a>
-</p>
+---
+marp: true
+theme: gaia
+paginate: true
+backgroundColor: #fff
+footer: '© 2025 TechWriter Solutions | Confidential'
+style: |
+  section {
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+  h1 {
+    color: #0066cc;
+  }
+  code {
+    background-color: #f0f0f0;
+    padding: 2px 5px;
+    border-radius: 4px;
+  }
+---
 
-reveal.js is an open source HTML presentation framework. It enables anyone with a web browser to create beautiful presentations for free. Check out the live demo at [revealjs.com](https://revealjs.com/).
+# Product API Documentation v2.0
+## Microservices Architecture & Scalability
 
-The framework comes with a powerful feature set including [nested slides](https://revealjs.com/vertical-slides/), [Markdown support](https://revealjs.com/markdown/), [Auto-Animate](https://revealjs.com/auto-animate/), [PDF export](https://revealjs.com/pdf-export/), [speaker notes](https://revealjs.com/speaker-view/), [LaTeX typesetting](https://revealjs.com/math/), [syntax highlighted code](https://revealjs.com/code/) and an [extensive API](https://revealjs.com/api/).
+**Maintained by:** Technical Documentation Team
+**Contact:** [23f2000898@ds.study.iitm.ac.in](mailto:23f2000898@ds.study.iitm.ac.in)
 
 ---
 
-Want to create reveal.js presentation in a graphical editor? Try <https://slides.com>. It's made by the same people behind reveal.js.
+## Introduction
+
+We have migrated our monolithic backend to a **distributed microservices** architecture. This transition allows for:
+
+* **Independent Deployment:** Services can be updated without downtime.
+* **Polyglot Persistence:** Utilizing different databases for different needs.
+* **Resilience:** Fault isolation prevents cascading failures.
+
+> "Documentation is a love letter that you write to your future self."
 
 ---
 
-### Getting started
-- 🚀 [Install reveal.js](https://revealjs.com/installation)
-- 👀 [View the demo presentation](https://revealjs.com/demo)
-- 📖 [Read the documentation](https://revealjs.com/markup/)
-- 🖌 [Try the visual editor for reveal.js at Slides.com](https://slides.com/)
-- 🎬 [Watch the reveal.js video course (paid)](https://revealjs.com/course)
+![bg left:40%](https://images.unsplash.com/photo-1558494949-ef526b0042a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
 
---- 
-<div align="center">
-  MIT licensed | Copyright © 2011-2024 Hakim El Hattab, https://hakim.se
-</div>
+## Visual Architecture
+
+The image to the left represents our new **Cloud Mesh Network**.
+
+### Key Components:
+1. **API Gateway:** Entry point for all clients.
+2. **Auth Service:** OAuth2 implementation.
+3. **Data Lake:** Long-term storage for analytics.
+
+---
+
+## Algorithmic Complexity
+
+To ensure high throughput, we optimized the routing algorithm. The computational complexity for request distribution is now defined as:
+
+$$
+T(n) = \sum_{i=1}^{k} \left( n \log n + \frac{1}{i} \right)
+$$
+
+Where:
+* $n$ is the number of active nodes.
+* $k$ is the number of concurrent requests.
+
+---
+
+## Deployment Strategy
+
+We utilize a **Blue-Green** deployment strategy to minimize risk.
+
+```yaml
+version: '3.8'
+services:
+  web:
+    image: product-api:latest
+    deploy:
+      replicas: 5
+      update_config:
+        parallelism: 2
