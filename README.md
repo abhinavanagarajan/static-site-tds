@@ -2,19 +2,15 @@
 marp: true
 theme: gaia
 paginate: true
-backgroundColor: #fff
+backgroundColor: #ffffff
 footer: '© 2025 TechWriter Solutions | Confidential'
 style: |
   section {
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
   }
   h1 {
-    color: #0066cc;
-  }
-  code {
-    background-color: #f0f0f0;
-    padding: 2px 5px;
-    border-radius: 4px;
+    color: #0984e3;
   }
 ---
 
@@ -38,11 +34,11 @@ We have migrated our monolithic backend to a **distributed microservices** archi
 
 ---
 
-![bg left:40%](https://images.unsplash.com/photo-1558494949-ef526b0042a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
+![bg right:40%](https://images.unsplash.com/photo-1558494949-ef526b0042a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)
 
 ## Visual Architecture
 
-The image to the left represents our new **Cloud Mesh Network**.
+The image to the right represents our new **Cloud Mesh Network**.
 
 ### Key Components:
 1. **API Gateway:** Entry point for all clients.
@@ -53,8 +49,9 @@ The image to the left represents our new **Cloud Mesh Network**.
 
 ## Algorithmic Complexity
 
-To ensure high throughput, we optimized the routing algorithm. The computational complexity for request distribution is now defined as:
+To ensure high throughput, we optimized the routing algorithm.
 
+**Complexity Formula:**
 $$
 T(n) = \sum_{i=1}^{k} \left( n \log n + \frac{1}{i} \right)
 $$
@@ -62,19 +59,3 @@ $$
 Where:
 * $n$ is the number of active nodes.
 * $k$ is the number of concurrent requests.
-
----
-
-## Deployment Strategy
-
-We utilize a **Blue-Green** deployment strategy to minimize risk.
-
-```yaml
-version: '3.8'
-services:
-  web:
-    image: product-api:latest
-    deploy:
-      replicas: 5
-      update_config:
-        parallelism: 2
